@@ -2,6 +2,7 @@ package net.heavenmine.hmezcore;
 
 import net.heavenmine.hmezcore.data.DataManager;
 import net.heavenmine.hmezcore.event.PlayerJoinServer;
+import net.heavenmine.hmezcore.event.PlayerLeaveServer;
 import net.heavenmine.hmezcore.file.ConfigFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -13,10 +14,9 @@ public final class Main extends JavaPlugin {
     public void onEnable() {
         getConfig().options().copyDefaults();
         saveDefaultConfig();
-
         reloadConfig();
-        getServer().getPluginManager().registerEvents(new PlayerJoinServer(), this);
-
+        getServer().getPluginManager().registerEvents(new PlayerJoinServer(this, configFile, dataManager), this);
+        getServer().getPluginManager().registerEvents(new PlayerLeaveServer(this, configFile, dataManager), this);
         dataManager.onLoad();
 //        getLogger().info(config.getVersion());
 

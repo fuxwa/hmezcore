@@ -1,6 +1,6 @@
 package net.heavenmine.hmezcore.modal;
 
-public class Player {
+public class PlayerData {
     private String id;
     private String userName;
     private String UUID;
@@ -62,5 +62,28 @@ public class Player {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public PlayerData(String id, String userName, String UUID, String IPAddress, String firstJoin, String lastJoin, String location) {
+        this.id = id;
+        this.userName = userName;
+        this.UUID = UUID;
+        this.IPAddress = IPAddress;
+        this.firstJoin = firstJoin;
+        this.lastJoin = lastJoin;
+        this.location = location;
+    }
+
+    @Override
+    public String toString() {
+        return "PlayerData{" +
+                "id='" + id + '\'' +
+                ", userName='" + userName + '\'' +
+                ", UUID='" + UUID + '\'' +
+                ", IPAddress='" + IPAddress + '\'' +
+                ", firstJoin='" + firstJoin + '\'' +
+                ", lastJoin='" + lastJoin + '\'' +
+                ", location='" + location + '\'' +
+                '}';
     }
 }
