@@ -1,3 +1,3 @@
 name: HMEasyCore
 version: '${project.version}'
-main: net.heavenmine.hmezcore.HMEasyCore
+main: net.heavenmine.hmezcore.Main
