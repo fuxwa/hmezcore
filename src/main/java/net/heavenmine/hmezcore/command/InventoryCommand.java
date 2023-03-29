@@ -14,15 +14,14 @@ import org.bukkit.inventory.Inventory;
 
 import java.io.File;
 
-public class EnderChestCommand implements CommandExecutor {
+public class InventoryCommand implements CommandExecutor {
     private final Main main;
     private final ConfigFile configFile;
 
-    public EnderChestCommand(Main main, ConfigFile configFile) {
+    public InventoryCommand(Main main, ConfigFile configFile) {
         this.main = main;
         this.configFile = configFile;
     }
-
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         YamlConfiguration messageFile = YamlConfiguration.loadConfiguration(new File(main.getDataFolder(), "message.yml"));
@@ -32,33 +31,30 @@ public class EnderChestCommand implements CommandExecutor {
             return false;
         }
         Player player = (Player) sender;
-        if(!player.hasPermission("hmezcore.command.enderchest")) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + messageFile.getString("no-permission") ));
+        if(!player.hasPermission("hmezcore.command.inventory")) {
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + messageFile.getString("player-not-found") ));
             return false;
         }
-        if(args.length == 0) {
-            Inventory enderChest = player.getEnderChest();
-            player.openInventory(enderChest);
-        } else if (args.length == 1) {
-            if(!player.hasPermission("hmezcore.command.enderchest.other")) {
-                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + messageFile.getString("no-permission") ));
-                return false;
-            }
-            Player target = main.getServer().getPlayer(args[0]);
+        Player target = main.getServer().getPlayer(args[0]);
+        if (args.length == 1) {
+//            OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(args[0]);
+//            Inventory enderChest = offlinePlayer.getPlayer().getEnderChest();
+//            player.openInventory(enderChest);
+//            Player target = main.getServer().getPlayer(args[0]);
             if(target != null) {
-                Inventory enderChest = target.getEnderChest();
-                player.openInventory(enderChest);
+                Inventory inventory = target.getInventory();
+                player.openInventory(inventory);
             } else {
                 OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(args[0]);
                 if(offlinePlayer.getPlayer() != null) {
-                    Inventory enderChest = offlinePlayer.getPlayer().getEnderChest();
-                    player.openInventory(enderChest);
+                    Inventory inventory = offlinePlayer.getPlayer().getInventory();
+                    player.openInventory(inventory);
                 } else {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + messageFile.getString("player-not-found").replace("{player}", args[0]) ));
                     return false;
                 }
             }
         }
-        return false;
+        return true;
     }
 }
