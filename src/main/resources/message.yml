@@ -1,0 +1,18 @@
+version: 1.0.0 #dont change
+
+prefix-broadcast: "&a[&cThông báo&a] "
+no-permission: "&cBạn không có quyền để dùng lệnh này"
+player-only: "&cLệnh này chỉ có người chơi mới có thế sử dụng"
+player-not-found: "&cKhông tìm thấy người chơi &a{player}"
+
+other-change-creative: "&aThanh niên &6{player} &ađã chuyển sang chế độ sáng tạo thành công"
+other-change-adventure: "&aThanh niên &6{player} &ađã chuyển sang chế độ phiêu lưu thành công"
+other-change-survival: "&aThanh niên &6{player} &ađã chuyển sang chế độ sinh tồn thành công"
+other-change-spectator: "&aThanh niên &6{player} &ađã chuyển sang chế độ theo dõi thành công"
+
+player-change-creative: "&aBạn đã chuyển sang chế độ sáng tạo thành công"
+player-change-adventure: "&aBạn đã chuyển sang chế độ phiêu lưu thành công"
+player-change-survival: "&aBạn đã chuyển sang chế độ sinh tồn thành công"
+player-change-spectator: "&aBạn đã chuyển sang chế độ theo dõi thành công"
+
+food-restore: "&aĐã phục hồi thức ăn"

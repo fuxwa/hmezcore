@@ -11,3 +11,5 @@ commands:
     description: Send massage to all player !
     aliases:
       - bc
+  feed:
+    description: Feed a player
