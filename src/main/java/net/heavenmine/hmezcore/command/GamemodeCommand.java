@@ -21,7 +21,34 @@ public class GamemodeCommand implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args) {
         String prefix = configFile.getPrefix();
         if (!(commandSender instanceof Player)) {
-            commandSender.sendMessage("Lệnh này chỉ có thể được sử dụng bởi người chơi.");
+            if (args.length == 2) {
+                Player target = main.getServer().getPlayer(args[0]);
+                if (target == null) {
+                    commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&',prefix +" &cKhông tìm thấy người chơi có tên là &a" + args[1]));
+                } else {
+                    if (args[0].equalsIgnoreCase("1")) {
+                        target.setGameMode(GameMode.CREATIVE);
+                        commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + " &6Thanh niên " + target.getDisplayName() + "đã chuyển qua chế độ sáng tạo thành công!"));
+                        return true;
+                    } else if (args[0].equalsIgnoreCase("2")) {
+                        target.setGameMode(GameMode.ADVENTURE);
+                        commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + " &6Thanh niên " + target.getDisplayName() + "đã chuyển qua chế độ phiêu lưu thành công!"));
+                        return true;
+                    } else if (args[0].equalsIgnoreCase("0")) {
+                        target.setGameMode(GameMode.SURVIVAL);
+                        commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + " &6Thanh niên " + target.getDisplayName() + "đã chuyển qua chế độ sinh tồn thành công!"));
+                        return true;
+                    } else if (args[0].equalsIgnoreCase("3")) {
+                        target.setGameMode(GameMode.SPECTATOR);
+                        commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + " &6Thanh niên " + target.getDisplayName() + "đã chuyển qua chế độ theo dõi thành công!"));
+                        return true;
+                    }
+                    commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + " &cTham số " + args[0] + " không tìm thấy"));
+                }
+                return false;
+            } else {
+                commandSender.sendMessage("Lệnh này chỉ có người chơi mới có thế sử dụng");
+            }
             return true;
         }
         Player player = (Player) commandSender;
