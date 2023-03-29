@@ -3,6 +3,7 @@ package net.heavenmine.hmezcore;
 import net.heavenmine.hmezcore.command.BroadcastCommand;
 import net.heavenmine.hmezcore.command.FeedCommand;
 import net.heavenmine.hmezcore.command.GamemodeCommand;
+import net.heavenmine.hmezcore.command.HealCommand;
 import net.heavenmine.hmezcore.data.DataManager;
 import net.heavenmine.hmezcore.event.PlayerJoinServer;
 import net.heavenmine.hmezcore.event.PlayerLeaveServer;
@@ -32,6 +33,7 @@ public final class Main extends JavaPlugin {
         getCommand("gm").setExecutor(new GamemodeCommand(this, configFile));
         getCommand("broadcast").setExecutor(new BroadcastCommand(this, configFile));
         getCommand("feed").setExecutor(new FeedCommand(this, configFile));
+        getCommand("heal").setExecutor(new HealCommand(this, configFile));
     }
     @Override
     public void onDisable() {

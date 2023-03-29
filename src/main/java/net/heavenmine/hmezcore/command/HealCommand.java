@@ -8,13 +8,14 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
 
 import java.io.File;
 
-public class FeedCommand implements CommandExecutor {
+public class HealCommand implements CommandExecutor {
     private final Main main;
     private final ConfigFile configFile;
-    public FeedCommand(Main main, ConfigFile configFile) {
+    public HealCommand(Main main, ConfigFile configFile) {
         this.configFile = configFile;
         this.main = main;
     }
@@ -23,12 +24,15 @@ public class FeedCommand implements CommandExecutor {
         YamlConfiguration messageFile = YamlConfiguration.loadConfiguration(new File(main.getDataFolder(), "message.yml"));
         String prefix = configFile.getPrefix();
         if(sender instanceof Player) {
-            if(sender.hasPermission("hmezcore.command.feed")){
+            if(sender.hasPermission("hmezcore.command.heal")){
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + messageFile.getString("no-permission") ));
                 return false;
             } else {
-                ((Player) sender).setFoodLevel(20);
-                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix +  messageFile.getString("food-restore") ));
+                ((Player) sender).setHealth(((Player) sender).getMaxHealth());
+                for (PotionEffect effect : ((Player) sender).getActivePotionEffects()) {
+                    ((Player) sender).removePotionEffect(effect.getType());
+                }
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix +  messageFile.getString("heal-restore") ));
             }
         } else {
             if(args.length == 1) {
@@ -37,10 +41,13 @@ public class FeedCommand implements CommandExecutor {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&',prefix + messageFile.getString("player-not-found").replace("{player}", args[0]) ));
                     return false;
                 }
-                target.setFoodLevel(20);
-                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix +  messageFile.getString("food-restore") ));
+                target.setHealth(target.getMaxHealth());
+                for (PotionEffect effect : target.getActivePotionEffects()) {
+                    target.removePotionEffect(effect.getType());
+                }
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix +  messageFile.getString("heal-restore") ));
             } else {
-                sender.sendMessage(ChatColor.translateAlternateColorCodes('&',prefix + "&6Use /feed <player> !"));
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&',prefix + "&6Use /heal <player> !"));
             }
         }
         return false;
