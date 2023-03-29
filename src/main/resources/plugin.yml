@@ -17,3 +17,9 @@ commands:
     description: Heal a player
   ec:
     description: Open enderchest
+  inventory:
+    description: Open inventory
+    aliases:
+      - inv
+  god:
+    description: Enable god mode

@@ -32,6 +32,8 @@ public final class Main extends JavaPlugin {
         getCommand("feed").setExecutor(new FeedCommand(this, configFile));
         getCommand("heal").setExecutor(new HealCommand(this, configFile));
         getCommand("ec").setExecutor(new EnderChestCommand(this, configFile));
+        getCommand("inventory").setExecutor(new InventoryCommand(this, configFile));
+        getCommand("god").setExecutor(new GodCommand(this, configFile));
     }
     @Override
     public void onDisable() {
