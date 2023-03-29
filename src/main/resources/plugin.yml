@@ -6,3 +6,8 @@ description: This plugin made by HeavenMine Team
 website: heavenmine.net
 commands:
   gm:
+    description: Change your game mode
+  broadcast:
+    description: Send massage to all player !
+    aliases:
+      - bc

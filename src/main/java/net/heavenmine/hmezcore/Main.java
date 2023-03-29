@@ -1,5 +1,6 @@
 package net.heavenmine.hmezcore;
 
+import net.heavenmine.hmezcore.command.BroadcastCommand;
 import net.heavenmine.hmezcore.command.GamemodeCommand;
 import net.heavenmine.hmezcore.data.DataManager;
 import net.heavenmine.hmezcore.event.PlayerJoinServer;
@@ -20,6 +21,7 @@ public final class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerLeaveServer(this, configFile, dataManager), this);
 
         getCommand("gm").setExecutor(new GamemodeCommand(this, configFile));
+        getCommand("broadcast").setExecutor(new BroadcastCommand(this, configFile));
         dataManager.onLoad();
 //        getLogger().info(config.getVersion());
 
