@@ -13,3 +13,7 @@ commands:
       - bc
   feed:
     description: Feed a player
+  heal:
+    description: Heal a player
+  ec:
+    description: Open enderchest
