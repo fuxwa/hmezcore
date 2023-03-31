@@ -26,15 +26,15 @@ public class PlayerJoinServer implements Listener {
         String uuid = event.getPlayer().getUniqueId().toString();
         String ip_address = event.getPlayer().getAddress().getAddress().getHostAddress();
         String firtjoin = date.toString();
-        PlayerData playerData = dataManager.getPlayer(uuid);
+        PlayerData playerData = dataManager.getPlayerData(uuid);
         if(playerData != null) {
             if(playerData.getFirstJoin() != null){
 //                event.getPlayer().sendMessage("Welcome back " + username + "!");
             } else {
-                dataManager.insertData(username, uuid, ip_address, firtjoin,"","");
+                dataManager.insertPlayerData(username, uuid, ip_address, firtjoin,"","", "","","");
             }
         } else {
-            dataManager.insertData(username, uuid, ip_address, firtjoin,"","");
+            dataManager.insertPlayerData(username, uuid, ip_address, firtjoin,"","","","","");
         }
     }
 }

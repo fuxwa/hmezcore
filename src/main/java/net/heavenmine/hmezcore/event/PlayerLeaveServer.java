@@ -4,6 +4,7 @@ import net.heavenmine.hmezcore.Main;
 import net.heavenmine.hmezcore.data.DataManager;
 import net.heavenmine.hmezcore.file.ConfigFile;
 import net.heavenmine.hmezcore.modal.PlayerData;
+import org.bukkit.Location;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -21,15 +22,19 @@ public class PlayerLeaveServer implements Listener {
         this.dataManager = dataManager;
     }
     @EventHandler
-    public void updatePlayer(PlayerQuitEvent event) {
+    public void updatePlayerData(PlayerQuitEvent event) {
         Date date = new Date();
         String uuid = event.getPlayer().getUniqueId().toString();
-        String location = event.getPlayer().getLocation().toString();
+        Location location = event.getPlayer().getLocation();
+        String world = location.getWorld().getName();
+        String x = String.valueOf(location.getX());
+        String y = String.valueOf(location.getY());
+        String z = String.valueOf(location.getZ());
         String lastjoin = date.toString();
-        PlayerData playerData = dataManager.getPlayer(uuid);
+        PlayerData playerData = dataManager.getPlayerData(uuid);
         if(playerData != null) {
             if(playerData.getFirstJoin() != null){
-                dataManager.updatePlayer(uuid, lastjoin, location);
+                dataManager.updatePlayerData(uuid, lastjoin, world, x, y, z);
             }
         }
     }

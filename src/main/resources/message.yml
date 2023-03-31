@@ -16,5 +16,11 @@ player-change-survival: "&aBạn đã chuyển sang chế độ sinh tồn thàn
 player-change-spectator: "&aBạn đã chuyển sang chế độ theo dõi thành công"
 
 food-restore: "&aĐã phục hồi thức ăn"
-heal-restore: "&aĐã phục hồi máu vết thương"
+heal-restore: "&aĐã phục hồi vết thương"
 god-mode: "&aBật chế độ bất tử thành công"
+
+max-home: "&cBạn đã đạt giới hạn home tối đa"
+set-home-complete: "&aBạn đã lưu home {home} thành công"
+del-home-complete: "&aBạn đã xóa home {home} thành công"
+teleported-to-home: "&aDịch chuyển tới {home} thành công"
+home-not-found: "&cKhông tìm thấy {home}"

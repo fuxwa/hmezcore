@@ -7,7 +7,43 @@ public class PlayerData {
     private String IPAddress;
     private String firstJoin;
     private String lastJoin;
-    private String location;
+    private String world;
+    private String x;
+    private String y;
+    private String z;
+
+    public String getWorld() {
+        return world;
+    }
+
+    public void setWorld(String world) {
+        this.world = world;
+    }
+
+    public String getX() {
+        return x;
+    }
+
+    public void setX(String x) {
+        this.x = x;
+    }
+
+    public String getY() {
+        return y;
+    }
+
+    public void setY(String y) {
+        this.y = y;
+    }
+
+    public String getZ() {
+        return z;
+    }
+
+    public void setZ(String z) {
+        this.z = z;
+    }
+
     public String getId() {
         return id;
     }
@@ -56,22 +92,17 @@ public class PlayerData {
         this.lastJoin = lastJoin;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public PlayerData(String id, String userName, String UUID, String IPAddress, String firstJoin, String lastJoin, String location) {
+    public PlayerData(String id, String userName, String UUID, String IPAddress, String firstJoin, String lastJoin, String world, String x, String y, String z) {
         this.id = id;
         this.userName = userName;
         this.UUID = UUID;
         this.IPAddress = IPAddress;
         this.firstJoin = firstJoin;
         this.lastJoin = lastJoin;
-        this.location = location;
+        this.world = world;
+        this.x = x;
+        this.y = y;
+        this.z = z;
     }
 
     @Override
@@ -83,7 +114,10 @@ public class PlayerData {
                 ", IPAddress='" + IPAddress + '\'' +
                 ", firstJoin='" + firstJoin + '\'' +
                 ", lastJoin='" + lastJoin + '\'' +
-                ", location='" + location + '\'' +
+                ", world='" + world + '\'' +
+                ", x='" + x + '\'' +
+                ", y='" + y + '\'' +
+                ", z='" + z + '\'' +
                 '}';
     }
 }

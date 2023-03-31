@@ -23,3 +23,7 @@ commands:
       - inv
   god:
     description: Enable god mode
+  home:
+    description: Home command
+    aliases:
+      - sethome

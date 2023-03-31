@@ -34,6 +34,7 @@ public final class Main extends JavaPlugin {
         getCommand("ec").setExecutor(new EnderChestCommand(this, configFile));
         getCommand("inventory").setExecutor(new InventoryCommand(this, configFile));
         getCommand("god").setExecutor(new GodCommand(this, configFile));
+        getCommand("home").setExecutor(new HomeCommand(this, configFile));
     }
     @Override
     public void onDisable() {

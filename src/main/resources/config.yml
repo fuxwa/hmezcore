@@ -7,6 +7,10 @@ version: 1.0.0
 
 prefix: "&a[HMEasyCore] "
 
+license:
+  key: "LICENSE_KEY"
+  use-hm-license: false
+
 storage:
   type: sqlite #sqlite or mysql
   host: localhost
@@ -14,3 +18,10 @@ storage:
   username: root
   password:
   dbname: database
+
+home:
+  default: 2 #player has hmezcore.home.multihome.default permission can save 2 home
+  vip: 3 #player has hmezcore.home.multihome.vip permission can save 3 home
+  pre: 4
+  mvp: 5
+
