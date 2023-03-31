@@ -27,3 +27,7 @@ commands:
     description: Home command
     aliases:
       - sethome
+  warps:
+    description: Warps command
+    aliases:
+      - warp

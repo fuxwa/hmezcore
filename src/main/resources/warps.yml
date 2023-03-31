@@ -1,0 +1,16 @@
+spawn: #default spawn
+  world: "world"
+  x: 0
+  y: 0
+  z: 0
+  pitch: 0
+  yaw: 0
+
+warps:
+  test:
+    world: "world"
+    x: 0
+    y: 0
+    z: 0
+    pitch: 0
+    yaw: 0

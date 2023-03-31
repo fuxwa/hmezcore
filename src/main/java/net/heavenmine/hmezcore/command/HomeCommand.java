@@ -109,7 +109,6 @@ public class HomeCommand implements CommandExecutor {
                         sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + messageFile.getString("player-only")));
                         return false;
                     }
-
                     Player player2 = (Player) sender;
                     data.deleteHome(player2.getUniqueId().toString(), args[1].toString());
                 case "tp":
@@ -123,7 +122,6 @@ public class HomeCommand implements CommandExecutor {
                         String homeName = args[1].toString();
                         HomePlayerData found = data.findHome(uuid, homeName);
                         if(found != null) {
-
                             World world = main.getServer().getWorld(found.getWorld());
                             Double x = Double.valueOf(found.getX());
                             Double y = Double.valueOf(found.getY());

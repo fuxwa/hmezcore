@@ -5,6 +5,10 @@ import net.heavenmine.hmezcore.data.DataManager;
 import net.heavenmine.hmezcore.event.PlayerJoinServer;
 import net.heavenmine.hmezcore.event.PlayerLeaveServer;
 import net.heavenmine.hmezcore.file.ConfigFile;
+import org.bukkit.Bukkit;
+import org.bukkit.World;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -18,12 +22,18 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
+
         getConfig().options().copyDefaults();
         saveDefaultConfig();
         reloadConfig();
         createMessageFile();
-        getLogger().info(getDataFolder().toString());
+        createWarpsFile();
         dataManager.onLoad();
+        try {
+            saveDefaultSpawn();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         getServer().getPluginManager().registerEvents(new PlayerJoinServer(this, configFile, dataManager), this);
         getServer().getPluginManager().registerEvents(new PlayerLeaveServer(this, configFile, dataManager), this);
 
@@ -35,6 +45,7 @@ public final class Main extends JavaPlugin {
         getCommand("inventory").setExecutor(new InventoryCommand(this, configFile));
         getCommand("god").setExecutor(new GodCommand(this, configFile));
         getCommand("home").setExecutor(new HomeCommand(this, configFile));
+        getCommand("warps").setExecutor(new WarpsCommand(this, configFile));
     }
     @Override
     public void onDisable() {
@@ -50,5 +61,33 @@ public final class Main extends JavaPlugin {
                 e.printStackTrace();
             }
         }
+    }
+    public void createWarpsFile() {
+        File itemsFile = new File(getDataFolder(), "warps.yml");
+        if (!itemsFile.exists()) {
+            itemsFile.getParentFile().mkdirs();
+            try (InputStream in = getResource("warps.yml")) {
+                Files.copy(in, itemsFile.toPath());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    public void saveDefaultSpawn() throws IOException {
+        World world = Bukkit.getWorld("world");
+        String worldName = world.getName();
+        Double x = world.getSpawnLocation().getX();
+        Double y = world.getSpawnLocation().getY();
+        Double z = world.getSpawnLocation().getZ();
+        Float pitch = world.getSpawnLocation().getPitch();
+        Float yaw = world.getSpawnLocation().getYaw();
+        FileConfiguration warps = YamlConfiguration.loadConfiguration(new File(getDataFolder(), "warps.yml"));
+        warps.set("spawn.world",worldName);
+        warps.set("spawn.x",x);
+        warps.set("spawn.y",y);
+        warps.set("spawn.z",z);
+        warps.set("spawn.pitch",pitch);
+        warps.set("spawn.yaw",yaw);
+        warps.save(new File(getDataFolder(), "warps.yml"));
     }
 }
