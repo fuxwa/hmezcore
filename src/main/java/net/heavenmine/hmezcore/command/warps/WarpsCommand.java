@@ -56,7 +56,7 @@ public class WarpsCommand implements CommandExecutor {
                 double z = warpsSection.getDouble("z");
                 float pitch = (float) warpsSection.getDouble("pitch");
                 float yaw = (float) warpsSection.getDouble("yaw");
-                Location location = new Location(world, x, y, z, pitch, yaw);
+                Location location = new Location(world, x, y, z, yaw, pitch);
                 player.teleport(location);
                 sender.sendMessage(helper.Print(messageFile.getString("teleported-to-warp").replace("{warp}",args[0])));
             }

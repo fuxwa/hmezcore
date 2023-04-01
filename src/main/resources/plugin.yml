@@ -35,3 +35,7 @@ commands:
     description: Set a new warp
   delwarp:
     description: Delete a warp
+  spawn:
+    description: Teleport to spawn
+  setspawn:
+    description: Set new location to spawn

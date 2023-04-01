@@ -1,6 +1,8 @@
 package net.heavenmine.hmezcore;
 
 import net.heavenmine.hmezcore.command.*;
+import net.heavenmine.hmezcore.command.spawn.SetSpawnCommand;
+import net.heavenmine.hmezcore.command.spawn.SpawnCommand;
 import net.heavenmine.hmezcore.command.warps.DelWarpCommand;
 import net.heavenmine.hmezcore.command.warps.SetWarpCommand;
 import net.heavenmine.hmezcore.command.warps.WarpsCommand;
@@ -32,11 +34,12 @@ public final class Main extends JavaPlugin {
         createMessageFile();
         createWarpsFile();
         dataManager.onLoad();
-        try {
-            saveDefaultSpawn();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        getServer().getWorld("world").setGameRuleValue("spawnRadius", "0");
+//        try {
+//            saveDefaultSpawn();
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
         getServer().getPluginManager().registerEvents(new PlayerJoinServer(this, configFile, dataManager), this);
         getServer().getPluginManager().registerEvents(new PlayerLeaveServer(this, configFile, dataManager), this);
 
@@ -51,6 +54,8 @@ public final class Main extends JavaPlugin {
         getCommand("warps").setExecutor(new WarpsCommand(this, configFile));
         getCommand("setwarp").setExecutor(new SetWarpCommand(this, configFile));
         getCommand("delwarp").setExecutor(new DelWarpCommand(this, configFile));
+        getCommand("spawn").setExecutor(new SpawnCommand(this, configFile));
+        getCommand("setspawn").setExecutor(new SetSpawnCommand(this, configFile));
     }
     @Override
     public void onDisable() {
@@ -82,17 +87,20 @@ public final class Main extends JavaPlugin {
         World world = Bukkit.getWorld("world");
         String worldName = world.getName();
         Double x = world.getSpawnLocation().getX();
-        Double y = world.getSpawnLocation().getY();
+        Double y = world.getSpawnLocation().getY() + 2;
         Double z = world.getSpawnLocation().getZ();
         Float pitch = world.getSpawnLocation().getPitch();
         Float yaw = world.getSpawnLocation().getYaw();
         FileConfiguration warps = YamlConfiguration.loadConfiguration(new File(getDataFolder(), "warps.yml"));
-        warps.set("spawn.world",worldName);
-        warps.set("spawn.x",x);
-        warps.set("spawn.y",y);
-        warps.set("spawn.z",z);
-        warps.set("spawn.pitch",pitch);
-        warps.set("spawn.yaw",yaw);
-        warps.save(new File(getDataFolder(), "warps.yml"));
+        if(warps.get("spawn") == null) {
+            warps.set("spawn.world",worldName);
+            warps.set("spawn.x",x);
+            warps.set("spawn.y",y);
+            warps.set("spawn.z",z);
+            warps.set("spawn.pitch",pitch);
+            warps.set("spawn.yaw",yaw);
+            warps.save(new File(getDataFolder(), "warps.yml"));
+        }
     }
+
 }
