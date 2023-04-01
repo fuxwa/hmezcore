@@ -1,6 +1,9 @@
 package net.heavenmine.hmezcore;
 
 import net.heavenmine.hmezcore.command.*;
+import net.heavenmine.hmezcore.command.warps.DelWarpCommand;
+import net.heavenmine.hmezcore.command.warps.SetWarpCommand;
+import net.heavenmine.hmezcore.command.warps.WarpsCommand;
 import net.heavenmine.hmezcore.data.DataManager;
 import net.heavenmine.hmezcore.event.PlayerJoinServer;
 import net.heavenmine.hmezcore.event.PlayerLeaveServer;
@@ -46,6 +49,8 @@ public final class Main extends JavaPlugin {
         getCommand("god").setExecutor(new GodCommand(this, configFile));
         getCommand("home").setExecutor(new HomeCommand(this, configFile));
         getCommand("warps").setExecutor(new WarpsCommand(this, configFile));
+        getCommand("setwarp").setExecutor(new SetWarpCommand(this, configFile));
+        getCommand("delwarp").setExecutor(new DelWarpCommand(this, configFile));
     }
     @Override
     public void onDisable() {

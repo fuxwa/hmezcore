@@ -1,4 +1,4 @@
-package net.heavenmine.hmezcore.command;
+package net.heavenmine.hmezcore.command.warps;
 
 import net.heavenmine.hmezcore.Helper;
 import net.heavenmine.hmezcore.Main;

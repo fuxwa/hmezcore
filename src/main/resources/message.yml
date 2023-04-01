@@ -27,3 +27,5 @@ home-not-found: "&cKhông tìm thấy {home}"
 
 warp-not-found: "&cKhông tìm thấy warp &6{warp}"
 teleported-to-warp: "&aDịch chuyển tới &6{warp} thành công"
+set-warp-complete: "&aBạn đã lưu warp {warp} thành công"
+del-warp-complete: "&aBạn đã xóa warp {warp} thành công"
