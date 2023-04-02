@@ -45,3 +45,11 @@ commands:
     description: Teleport to other player
   tphere:
     description: Teleport other player to your location
+  tpa:
+    description: Send request teleport to other player
+  tpahere:
+    description: Send request teleport other player to your location
+  tpaccept:
+    description: Accept request teleport other player to your location
+  tpadeny:
+    description: Deny request teleport other player to your location

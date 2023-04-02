@@ -39,9 +39,13 @@ public class TPCommand implements CommandExecutor {
                 "&6/tphere <name> - Teleport other player to your location\n";
         if(args.length == 1) {
             Player target = main.getServer().getPlayer(args[0]);
+            if(target == null) {
+                player.sendMessage(helper.Print(messageFile.getString("player-not-found").replace("{player}",args[0]),true));
+                return false;
+            }
             Location location = target.getLocation();
             player.teleport(location);
-            player.sendMessage(helper.Print(messageFile.getString("teleported-to-player"),true));
+            player.sendMessage(helper.Print(messageFile.getString("teleported-to-player").replace("{player}",args[0]),true));
             return true;
         } else {
             sender.sendMessage(helper.Print(message));

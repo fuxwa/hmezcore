@@ -39,3 +39,10 @@ back-not-found: "&aBạn chưa di chuyển đến vị trí nào cả"
 
 teleported-to-player: "&aBạn đã dịch chuyển tới &6{player} &athành công"
 player-teleported-to: "&6{player} &ađã dịch chuyển tới bạn"
+
+receive-request-teleport: "&aThanh niên &6{player}&a đã gửi cho bạn một yêu cầu dịch chuyển tới chỗ bạn!\n&aNhấn &6/tpaccept&a để chấp nhận!\n&aNhấn &6/tpdeny&a để từ chối!"
+send-request-success: "&aĐã gửi yêu cầu tới thành niên &6{player}&a thành công!"
+accept-request: "&aThanh niên &6{player}&a đã đồng ý yêu cầu dịch chuyển của bạn"
+deny-request: "&cThanh niên &6{player}&a đã từ chối yêu cầu dịch chuyển của bạn"
+request-not-found: "&cBạn không có yêu cầu dịch chuyển nào cả"
+deny-request-other: "&cĐã hủy yêu cầu dịch chuyển!"

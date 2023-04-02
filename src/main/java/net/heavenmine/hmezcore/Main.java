@@ -3,6 +3,7 @@ package net.heavenmine.hmezcore;
 import net.heavenmine.hmezcore.command.*;
 import net.heavenmine.hmezcore.command.spawn.SetSpawnCommand;
 import net.heavenmine.hmezcore.command.spawn.SpawnCommand;
+import net.heavenmine.hmezcore.command.teleport.*;
 import net.heavenmine.hmezcore.command.warps.DelWarpCommand;
 import net.heavenmine.hmezcore.command.warps.SetWarpCommand;
 import net.heavenmine.hmezcore.command.warps.WarpsCommand;
@@ -42,6 +43,10 @@ public final class Main extends JavaPlugin {
 //            throw new RuntimeException(e);
 //        }
         PlayerTeleport playerTeleport = new PlayerTeleport();
+        TPACommand tpaCommand = new TPACommand(this, configFile);
+        TPAcceptCommand tpAcceptCommand = new TPAcceptCommand(this, configFile, tpaCommand);
+        TPADenyCommand tpaDenyCommand = new TPADenyCommand(this, configFile, tpaCommand);
+
         getServer().getPluginManager().registerEvents(new PlayerJoinServer(this, configFile, dataManager), this);
         getServer().getPluginManager().registerEvents(new PlayerLeaveServer(this, configFile, dataManager), this);
         getServer().getPluginManager().registerEvents(playerTeleport,this);
@@ -60,6 +65,11 @@ public final class Main extends JavaPlugin {
         getCommand("spawn").setExecutor(new SpawnCommand(this, configFile));
         getCommand("setspawn").setExecutor(new SetSpawnCommand(this, configFile));
         getCommand("back").setExecutor(new BackCommand(this, configFile, playerTeleport));
+        getCommand("tp").setExecutor(new TPCommand(this, configFile));
+        getCommand("tphere").setExecutor(new TPHereCommand(this, configFile));
+        getCommand("tpa").setExecutor(tpaCommand);
+        getCommand("tpaccept").setExecutor(tpAcceptCommand);
+        getCommand("tpadeny").setExecutor(tpaDenyCommand);
     }
     @Override
     public void onDisable() {
