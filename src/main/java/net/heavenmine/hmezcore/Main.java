@@ -9,6 +9,7 @@ import net.heavenmine.hmezcore.command.warps.WarpsCommand;
 import net.heavenmine.hmezcore.data.DataManager;
 import net.heavenmine.hmezcore.event.PlayerJoinServer;
 import net.heavenmine.hmezcore.event.PlayerLeaveServer;
+import net.heavenmine.hmezcore.event.PlayerTeleport;
 import net.heavenmine.hmezcore.file.ConfigFile;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -40,8 +41,10 @@ public final class Main extends JavaPlugin {
 //        } catch (IOException e) {
 //            throw new RuntimeException(e);
 //        }
+        PlayerTeleport playerTeleport = new PlayerTeleport();
         getServer().getPluginManager().registerEvents(new PlayerJoinServer(this, configFile, dataManager), this);
         getServer().getPluginManager().registerEvents(new PlayerLeaveServer(this, configFile, dataManager), this);
+        getServer().getPluginManager().registerEvents(playerTeleport,this);
 
         getCommand("gm").setExecutor(new GamemodeCommand(this, configFile));
         getCommand("broadcast").setExecutor(new BroadcastCommand(this, configFile));
@@ -56,6 +59,7 @@ public final class Main extends JavaPlugin {
         getCommand("delwarp").setExecutor(new DelWarpCommand(this, configFile));
         getCommand("spawn").setExecutor(new SpawnCommand(this, configFile));
         getCommand("setspawn").setExecutor(new SetSpawnCommand(this, configFile));
+        getCommand("back").setExecutor(new BackCommand(this, configFile, playerTeleport));
     }
     @Override
     public void onDisable() {

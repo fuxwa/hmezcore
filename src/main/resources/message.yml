@@ -33,3 +33,6 @@ del-warp-complete: "&aBạn đã xóa warp {warp} thành công"
 teleported-to-spawn: "&aBạn đã dịch chuyển đến spawn thành công"
 set-spawn-complete: "&aBạn set spawn mới thành công"
 spawn-not-found: "&cKhông tìm thấy spawn. Dùng /setspawn để set spawn mới"
+
+back-success: "&aĐã quay lại vị trí trước đó"
+back-not-found: "&aBạn chưa di chuyển đến vị trí nào cả"

@@ -33,6 +33,11 @@ public class WarpsCommand implements CommandExecutor {
                 "&6/warp - Show all warps!\n";
         if(args.length == 0) {
             String listwarp = "&6Warps: &f";
+            if(warpsFile.get("spawn") == null) {
+                sender.sendMessage(helper.Print( messageFile.getString("spawn-not-found"),true));
+                sender.sendMessage(helper.Print(listwarp,true));
+                return false;
+            }
             ConfigurationSection warpsSection = warpsFile.getConfigurationSection("warps");
             for (String warpName : warpsSection.getKeys(false)){
                 listwarp = listwarp + warpName + " ";
