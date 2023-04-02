@@ -20,15 +20,15 @@ heal-restore: "&aĐã phục hồi vết thương"
 god-mode: "&aBật chế độ bất tử thành công"
 
 max-home: "&cBạn đã đạt giới hạn home tối đa"
-set-home-complete: "&aBạn đã lưu home {home} thành công"
-del-home-complete: "&aBạn đã xóa home {home} thành công"
-teleported-to-home: "&aDịch chuyển tới {home} thành công"
-home-not-found: "&cKhông tìm thấy {home}"
+set-home-complete: "&aBạn đã lưu home &6{home} &athành công"
+del-home-complete: "&aBạn đã xóa home &6{home} &athành công"
+teleported-to-home: "&aDịch chuyển tới &6{home} &athành công"
+home-not-found: "&cKhông tìm thấy &6{home}"
 
 warp-not-found: "&cKhông tìm thấy warp &6{warp}"
-teleported-to-warp: "&aDịch chuyển tới &6{warp} thành công"
-set-warp-complete: "&aBạn đã lưu warp {warp} thành công"
-del-warp-complete: "&aBạn đã xóa warp {warp} thành công"
+teleported-to-warp: "&aDịch chuyển tới &6{warp} &athành công"
+set-warp-complete: "&aBạn đã lưu warp &6{warp} &athành công"
+del-warp-complete: "&aBạn đã xóa warp &6{warp} &athành công"
 
 teleported-to-spawn: "&aBạn đã dịch chuyển đến spawn thành công"
 set-spawn-complete: "&aBạn set spawn mới thành công"
@@ -36,3 +36,6 @@ spawn-not-found: "&cKhông tìm thấy spawn. Dùng /setspawn để set spawn m�
 
 back-success: "&aĐã quay lại vị trí trước đó"
 back-not-found: "&aBạn chưa di chuyển đến vị trí nào cả"
+
+teleported-to-player: "&aBạn đã dịch chuyển tới &6{player} &athành công"
+player-teleported-to: "&6{player} &ađã dịch chuyển tới bạn"
